@@ -3,17 +3,16 @@ package roomscape.es.prototype.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import roomscape.es.prototype.PrototypeApplication;
 import roomscape.es.prototype.entities.EntityVideoGame;
 import roomscape.es.prototype.repositories.VideoGameRepository;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 public class Controller {
 
     private static final Logger log = LoggerFactory.getLogger(PrototypeApplication.class);
@@ -21,18 +20,16 @@ public class Controller {
     @Autowired
     private VideoGameRepository videoGameRepository;
 
-    @PostMapping("/add")
-    public EntityVideoGame addVideoGame(@RequestParam String name, @RequestParam String description) {
+    @PostMapping(path = "/add", consumes = "application/json")
+    public EntityVideoGame addVideoGame(@RequestBody EntityVideoGame videoGame, HttpServletResponse response) {
 
-        EntityVideoGame aux = videoGameRepository.findEntityVideoGameByName(name);
-        if (aux != null) {
-            log.info("The {} video game cannot be registered because it already exists", aux.getName());
-            return aux;
+        EntityVideoGame auxVideoGame = videoGameRepository.findEntityVideoGameByNameAndConsole(videoGame.getName(), videoGame.getConsole());
+        if (auxVideoGame != null) {
+            log.info("The {} video game cannot be registered because it already exists", auxVideoGame.getName());
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return auxVideoGame;
         }
-        EntityVideoGame newVideoGame = new EntityVideoGame();
-        newVideoGame.setName(name);
-        newVideoGame.setDescription(description);
-        return videoGameRepository.save(newVideoGame);
+        return videoGameRepository.save(videoGame);
     }
 
     @GetMapping("/list")
