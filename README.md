@@ -1,4 +1,4 @@
-# RoomScape (Prototipo tecnológico)
+# RoomScape Prototipo (Back End)
 
 ![Aquí la descripción de la imagen por si no carga](./src/main/resources/static/RoomScapeArquitectura1.0.0.png)
 
@@ -22,11 +22,13 @@ así:
 mvn spring-boot:run
 ```
 
-## Base de Datos
+## Dependencias
+
+### Base de Datos
 
 La aplicación de conecta a una Base de Datos MySQL en un servidor web:
 
-### phpMyAdmin:
+#### phpMyAdmin:
 
 http://mysql.roomscape.es/
 
@@ -35,7 +37,7 @@ usuario: roomscape
 password: roomscape
 ```
 
-### MySQL:
+#### MySQL:
 
 ```shell
 jdbc:mysql://192.168.1.56:3306/roomscape_prototype
