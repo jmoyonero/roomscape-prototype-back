@@ -11,8 +11,9 @@ import roomscape.es.prototype.repositories.VideoGameRepository;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class Controller {
 
     private static final Logger log = LoggerFactory.getLogger(PrototypeApplication.class);
