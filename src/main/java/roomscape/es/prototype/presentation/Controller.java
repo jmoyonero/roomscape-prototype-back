@@ -9,6 +9,7 @@ import roomscape.es.prototype.business.SAVideoGame;
 import roomscape.es.prototype.integration.EntityVideoGame;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,22 +28,34 @@ public class Controller {
 
         log.info("Starting the creation of the video game: {} ", videoGame.getName());
 
+        EntityVideoGame eVideoGame;
+
         Optional<EntityVideoGame> entityVideoGame = Optional.ofNullable(saVideoGame.CreateVideoGame(videoGame));
         if (entityVideoGame.isPresent()) {
             response.setStatus(HttpServletResponse.SC_OK);
+            eVideoGame = entityVideoGame.get();
         } else {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            eVideoGame = new EntityVideoGame();
         }
-        return entityVideoGame.get();
+        return eVideoGame;
     }
 
     @GetMapping("/list")
-    public List<EntityVideoGame> getCustomers(HttpServletResponse response) {
+    public List<EntityVideoGame> listVideoGames(HttpServletResponse response) {
 
         log.info("Starting the video game list");
 
-        List<EntityVideoGame> videoGames = saVideoGame.ReadAllVideoGames();
-        response.setStatus(HttpServletResponse.SC_OK);
-        return videoGames;
+        List<EntityVideoGame> eVideoGames;
+
+        Optional<List<EntityVideoGame>> videoGames = Optional.ofNullable(saVideoGame.ReadAllVideoGames());
+        if (videoGames.isPresent()) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            eVideoGames = videoGames.get();
+        } else {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            eVideoGames = new ArrayList<>();
+        }
+        return eVideoGames;
     }
 }
