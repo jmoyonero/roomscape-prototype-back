@@ -41,7 +41,7 @@ public class SAVideoGameImpTest {
     @DisplayName("Alta de un videojuego exitosa")
     public void CreateVideoGameOk() {
 
-        // Mock CreateVideoGame() method
+        // mocks repositoryVideoGame
         when(repositoryVideoGame.findEntityVideoGameByNameAndConsole("Resident Evil 2", "PS4")).thenReturn(null);
         when(repositoryVideoGame.save(videoGameIn)).thenReturn(videoGameOut);
 
@@ -55,7 +55,7 @@ public class SAVideoGameImpTest {
     @DisplayName("Alta de un videojuego fallida - Videojuego existente en la BDD")
     public void CreateVideoGameFailExistVideoGame() {
 
-        // Mock CreateVideoGame() method
+        // mocks repositoryVideoGame
         when(repositoryVideoGame.findEntityVideoGameByNameAndConsole("Resident Evil 2", "PS4")).thenReturn(videoGameOut);
 
         EntityVideoGame eVideoGame = saVideoGame.CreateVideoGame(videoGameIn);

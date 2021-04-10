@@ -78,9 +78,9 @@ public class ControllerTest {
 
     @Test
     @DisplayName("Listado de videojuegos exitosa - StatusOK (200)")
-    public void getVideoGamesOK() {
+    public void listVideoGamesOK() {
 
-        // Mock CreateVideoGame() method
+        // Mock ReadAllVideoGames() method
         when(saVideoGame.ReadAllVideoGames()).thenReturn(videoGames);
 
         List<EntityVideoGame> eVideoGames = controller.listVideoGames(response);
@@ -90,9 +90,9 @@ public class ControllerTest {
 
     @Test
     @DisplayName("Listado de videojuegos fallido - BadStatus (400)")
-    public void getVideoGamesOk() {
+    public void listVideoGamesOk() {
 
-        // Mock CreateVideoGame() method
+        // Mock ReadAllVideoGames() method
         when(saVideoGame.ReadAllVideoGames()).thenReturn(null);
 
         List<EntityVideoGame> eVideoGames = controller.listVideoGames(response);
