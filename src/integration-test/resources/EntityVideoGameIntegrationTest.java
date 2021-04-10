@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class EntityVideoGameTestIntegration {
+public class EntityVideoGameIntegrationTest {
 
     @Autowired
     private RepositoryVideoGame repositoryVideoGame;
