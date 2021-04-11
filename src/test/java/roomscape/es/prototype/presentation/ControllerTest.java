@@ -51,7 +51,7 @@ public class ControllerTest {
     }
 
     @Test
-    @DisplayName("Alta de un videojuego exitosa - StatusOK (200)")
+    @DisplayName("Alta exitosa de un videojuego - StatusOK (200)")
     public void addVideoGameOk() {
 
         // Mock CreateVideoGame() method
@@ -65,7 +65,7 @@ public class ControllerTest {
     }
 
     @Test
-    @DisplayName("Alta de un videojuego fallida - BadStatus (400)")
+    @DisplayName("Alta fallida de un videojuego - BadStatus (400)")
     public void addVideoGameFail() {
 
         // Mock CreateVideoGame() method
@@ -77,7 +77,7 @@ public class ControllerTest {
     }
 
     @Test
-    @DisplayName("Listado de videojuegos exitosa - StatusOK (200)")
+    @DisplayName("Listado exitoso de videojuegos - StatusOK (200)")
     public void listVideoGamesOK() {
 
         // Mock ReadAllVideoGames() method
@@ -89,7 +89,7 @@ public class ControllerTest {
     }
 
     @Test
-    @DisplayName("Listado de videojuegos fallido - BadStatus (400)")
+    @DisplayName("Listado fallido de videojuegos - BadStatus (400)")
     public void listVideoGamesOk() {
 
         // Mock ReadAllVideoGames() method

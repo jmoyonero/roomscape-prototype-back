@@ -38,7 +38,7 @@ public class SAVideoGameImpTest {
     }
 
     @Test
-    @DisplayName("Alta de un videojuego exitosa")
+    @DisplayName("Alta exitosa de un videojuego")
     public void CreateVideoGameOk() {
 
         // mocks repositoryVideoGame
@@ -52,7 +52,7 @@ public class SAVideoGameImpTest {
     }
 
     @Test
-    @DisplayName("Alta de un videojuego fallida - Videojuego existente en la BDD")
+    @DisplayName("Alta fallida de un videojuego - existente en la BDD")
     public void CreateVideoGameFailExistVideoGame() {
 
         // mocks repositoryVideoGame
